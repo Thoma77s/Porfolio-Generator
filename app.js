@@ -1,14 +1,25 @@
-const fs = require('fs');
+const inquirer = require('inquirer');
 
-const generatePage = require('./src/page-template');
+// const fs = require('fs');
 
-const profileDataArgs = process.argv.slice(2, process.argv.length);
-
-const [userName, github] = profileDataArgs;
+// const generatePage = require('./src/page-template');
 
 
-fs.writeFile('./index.html', generatePage(userName, github), err => {
-  if (err) throw err;
+// const pageHTML = generatePage(userName, github);
 
-  console.log('Portfolio complete! Check out index.html to see the output!');
-});
+
+// fs.writeFile('./index.html', generatePage(userName, github), err => {
+//   if (err) throw err;
+
+//   console.log('Portfolio complete! Check out index.html to see the output!');
+// });
+
+inquirer
+  .prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is your name?'
+    }
+  ])
+  .then(answers => console.log(answers))
